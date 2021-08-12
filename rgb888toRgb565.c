@@ -8,7 +8,7 @@ int convert888to565(int rgb888){
         thirdOctet = rgb888 & 0xFF;
         
         float firstOctetMaxLength, secondOctetMaxLength, thirdOctetMaxLength;
-        firstOctetMaxLength = firstOctetMaxLength = pow(2, 5);
+        firstOctetMaxLength = thirdOctetMaxLength = pow(2, 5);
         secondOctetMaxLength = pow(2, 6);
         
         int firstOctetNewVal =  (float) firstOctet / 256.0 * firstOctetMaxLength;
