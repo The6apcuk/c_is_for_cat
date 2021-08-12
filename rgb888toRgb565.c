@@ -15,9 +15,7 @@ int convert888to565(int rgb888){
         int secondOctetNewVal =  (float) secondOctet / 256.0 * secondOctetMaxLength;
         int thirdOctetNewVal =  (float) thirdOctet / 256.0 * thirdOctetMaxLength;
         
-        int rgb565 = firstOctetNewVal << (5+6) | secondOctetNewVal << 5 | thirdOctetNewVal;
-        
-        return rgb565;
+        return firstOctetNewVal << (5+6) | secondOctetNewVal << 5 | thirdOctetNewVal;
 }
 
 
