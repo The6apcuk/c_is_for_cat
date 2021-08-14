@@ -1,29 +1,41 @@
 #include <stdio.h>
+#include <math.h>
+
+#define METER_TO_INCH_COEF 39.37
+
+float scanVal(char valName[]){
+        printf("Please input %s:\n", valName);
+        char val[256];
+        fgets(val, sizeof val, stdin);
+
+        float val_float = 0;
+        int dotLevel = 0;
+        for (int i = 0; val[i] != '\0' &&  val[i] != '\n'; i++)
+                if (val[i] == '.'){
+                        dotLevel = 1;
+                }
+                else if (not dotLevel){
+                        val_float = 10 * val_float + (val[i] - '0');
+                }
+                else{
+                        val_float += ((val[i] - '0') * pow(10, - dotLevel));
+                        dotLevel += 1;
+                }
+        return val_float;
+}
+
 
 
 int main(){
     
         // get two values from user
-        printf("Please input height:\n");
-        char height[256];
-        fgets(height, sizeof height, stdin);
-        
-        int height_int = 0;
-        for (int i=0; height[i] != '\0' &&  height[i] != '\n'; i++)
-            height_int = 10 * height_int + (height[i] - '0');
-            
-        printf("Please input wides:\n");
-        char width[256];
-        fgets(width, sizeof width, stdin);
-        
-        int width_int = 0;
-        for (int i=0; width[i] != '\0' &&  width[i] != '\n'; i++)
-            width_int = 10 * width_int + (width[i] - '0');
+        float height_float = scanVal("height");
+        float width_float = scanVal("width");
 
-        printf("height %i, wides %i\n", height_int, width_int);
+        printf("height %f, wides %f\n", height_float, width_float);
         
-        float perimeter = ((float) ((width_int + height_int) * 2)) * 39.37;
-        float area = ((float) (width_int * height_int)) * 39.37;
+        float perimeter = (width_float + height_float) * 2 * METER_TO_INCH_COEF;
+        float area = width_float * height_float * METER_TO_INCH_COEF;
         printf("perimeter %f, area %f\n", perimeter, area);
         
 }
