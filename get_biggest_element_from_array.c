@@ -8,8 +8,6 @@ int cmpfunc (const void * a, const void * b) {
 }
 
 
-struct structName {int a; int b ;};
-
 int main () {
    int array[] = { 1,41,2,1,23,123,41,12,123,1212,15,16,4,324,1234,0,321,5,231,3,2,112,3,412 };
    int array_size = sizeof(array)/sizeof(array[0]);
@@ -32,8 +30,4 @@ int main () {
    clock_gettime(CLOCK_REALTIME, &end2);
    printf("%i, time %lu\n", res, end2.tv_nsec - begin2.tv_nsec);
    
-   struct structName *structVal = malloc(sizeof(*structVal));
-   structVal->a = 5;
-   (*structVal).a = 5;
-
 }
