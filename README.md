@@ -1,1 +1,1 @@
-Dedicated to cats and specifc girl
+Dedicated to cats and a specifc girl
